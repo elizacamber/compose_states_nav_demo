@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Compose states demo</string>
+    <string name="bottom_1">Feature 1</string>
+    <string name="bottom_2">Feature 2</string>
+    <string name="bottom_3">Feature 3</string>
+</resources>
