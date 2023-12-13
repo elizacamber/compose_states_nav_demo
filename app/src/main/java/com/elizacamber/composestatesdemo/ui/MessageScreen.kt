@@ -25,7 +25,7 @@ fun MsgInputBar() {
 
         //1
         //2
-        IconButton(onClick = { } , enabled = msg.isNotEmpty() ) {
+        IconButton(onClick = { }) {
             Icon(Icons.Default.Send, contentDescription = "send")
         }
     }

@@ -33,17 +33,13 @@ class UIDemoAppState(
         }
 
     val shouldShowBottomBar: Boolean
-        @Composable get() = navController.currentBackStackEntryAsState().value?.destination?.route == "msg"
+        @Composable get() = currentDestination?.route == "msg" //19
 
     val bottomBarDestinations: List<BottomBarDestination> = BottomBarDestination.values().asList()
 
     fun navigateToBottomBarDestination(bottomBarDestination: BottomBarDestination) {
         val bottomBarNavOptions = navOptions {
-            popUpTo(navController.graph.findStartDestination().id) {
-                saveState = true
-            }
-            launchSingleTop = true
-            restoreState = true
+            //18
         }
 
         when (bottomBarDestination) {

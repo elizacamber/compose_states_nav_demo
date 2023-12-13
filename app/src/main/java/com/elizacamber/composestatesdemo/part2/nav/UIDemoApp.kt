@@ -19,6 +19,7 @@ fun UIDemoApp(navController: NavHostController /* //11 */) {
             //12
             UIDemoBottomBar(
                 destinations = BottomBarDestination.values().asList(), //13 , //14
+               // onNavToDestination = {}
                 currentDestination = navController.currentDestination //15
             )
         }

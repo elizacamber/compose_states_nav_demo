@@ -21,7 +21,7 @@ fun UIDemoNavHost(
         modifier = modifier,
     ) {
         // !!! DO NOT NAME THE ROUTES HERE LIKE THIS! DEMO PURPOSES ONLY
-        composable("dashboard") { Dashboard { navController.navigate("msg") /* appState.navigateToMessage() */ } }
+        composable("dashboard") { Dashboard { navController.navigate("msg") } }
         composable("msg") { MsgInputBar() }
 
         //5
