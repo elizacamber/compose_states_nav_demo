@@ -15,7 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.elizacamber.composestatesdemo.ui.MsgInputBar
+import com.elizacamber.composestatesdemo.part2.nav.UIDemoApp
+import com.elizacamber.composestatesdemo.part2.nav.UIDemoNavHost
+import com.elizacamber.composestatesdemo.ui.MsgInputBarScreen
 import com.elizacamber.composestatesdemo.ui.theme.ComposeStatesDemoTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,14 +30,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController = rememberNavController()
-                    // !!! DO NOT NAME THE ROUTES HERE LIKE THIS! DEMO PURPOSES ONLY
-                    NavHost(navController = navController, startDestination = "dashboard") {
-                        composable("dashboard") { Dashboard { navController.navigate("msg") } }
-                        composable("msg") { MsgInputBar() }
-                    }
-
-                    //4
+                    UIDemoApp()
                 }
             }
         }

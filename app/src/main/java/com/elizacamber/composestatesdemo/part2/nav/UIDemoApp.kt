@@ -13,14 +13,17 @@ import androidx.navigation.NavHostController
 
 @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun UIDemoApp(navController: NavHostController /* //11 */) {
+fun UIDemoApp(appState: UIDemoAppState = rememberUIDemoAppState()) {
     Scaffold(
         bottomBar = {
-            //12
-            UIDemoBottomBar(
-                destinations = BottomBarDestination.values().asList(), //13 , //14
-                currentDestination = navController.currentDestination //15
-            )
+            if (appState.shouldShowBottomBar) {
+                UIDemoBottomBar(
+                    destinations = appState.bottomBarDestinations,
+                    onNavigateToDestination = appState::navigateToBottomBarDestination,
+                    currentDestination = appState.currentDestination
+                )
+            }
+
         }
     ) { paddingValues ->
         Row(
@@ -29,7 +32,7 @@ fun UIDemoApp(navController: NavHostController /* //11 */) {
                 .padding(paddingValues)
                 .consumeWindowInsets(paddingValues)
         ) {
-            UIDemoNavHost(navController)
+            UIDemoNavHost(appState)
         }
     }
 }

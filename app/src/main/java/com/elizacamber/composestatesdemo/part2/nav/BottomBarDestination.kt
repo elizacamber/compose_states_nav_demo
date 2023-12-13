@@ -6,7 +6,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.elizacamber.composestatesdemo.R
 
-//6
 enum class BottomBarDestination(
     val icon: ImageVector,
     val selectedColor: Color,

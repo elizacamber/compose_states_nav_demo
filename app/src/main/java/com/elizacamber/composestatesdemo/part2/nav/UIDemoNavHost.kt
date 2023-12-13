@@ -6,24 +6,29 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.elizacamber.composestatesdemo.Dashboard
-import com.elizacamber.composestatesdemo.ui.MsgInputBar
+import com.elizacamber.composestatesdemo.ui.MsgInputBarScreen
+import com.elizacamber.featureone.featureOneScreen
+import com.elizacamber.featurethree.featureThreeScreen
+import com.elizacamber.featuretwo.featureTwoScreen
 
 @Composable
 fun UIDemoNavHost(
-    navController: NavHostController, // 16
+    appState: UIDemoAppState,
     modifier: Modifier = Modifier,
     startDestination: String = "dashboard",
 ) {
-    //17
+    val navController = appState.navController
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier,
     ) {
         // !!! DO NOT NAME THE ROUTES HERE LIKE THIS! DEMO PURPOSES ONLY
-        composable("dashboard") { Dashboard { navController.navigate("msg") /* appState.navigateToMessage() */ } }
-        composable("msg") { MsgInputBar() }
+        composable("dashboard") { Dashboard { navController.navigate("msg") } }
+        composable("msg") { MsgInputBarScreen() }
 
-        //5
+        featureOneScreen()
+        featureTwoScreen()
+        featureThreeScreen()
     }
 }

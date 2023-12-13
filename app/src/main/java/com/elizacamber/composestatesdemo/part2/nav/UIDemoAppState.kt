@@ -2,10 +2,12 @@ package com.elizacamber.composestatesdemo.part2.nav
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.elizacamber.featureone.featureOneRoute
 import com.elizacamber.featureone.navigateToFeatureOne
@@ -14,7 +16,15 @@ import com.elizacamber.featurethree.navigateToFeatureThree
 import com.elizacamber.featuretwo.featureTwoRoute
 import com.elizacamber.featuretwo.navigateToFeatureTwo
 
-//10
+@Composable
+fun rememberUIDemoAppState(
+    navController: NavHostController = rememberNavController(),
+    snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
+): UIDemoAppState {
+    return remember(navController) {
+        UIDemoAppState(navController = navController, snackbarHostState = snackbarHostState)
+    }
+}
 
 class UIDemoAppState(
     val navController: NavHostController,
@@ -33,7 +43,9 @@ class UIDemoAppState(
         }
 
     val shouldShowBottomBar: Boolean
-        @Composable get() = navController.currentBackStackEntryAsState().value?.destination?.route == "msg"
+        @Composable get() = currentDestination?.route == "msg"
+                || currentDestination?.route == featureOneRoute
+
 
     val bottomBarDestinations: List<BottomBarDestination> = BottomBarDestination.values().asList()
 

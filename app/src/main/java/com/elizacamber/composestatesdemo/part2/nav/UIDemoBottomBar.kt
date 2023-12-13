@@ -10,11 +10,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 
-//7
 @Composable
 fun UIDemoBottomBar(
     destinations: List<BottomBarDestination>,
-    //9
+    onNavigateToDestination: (BottomBarDestination) -> Unit,
     currentDestination: NavDestination?,
     modifier: Modifier = Modifier,
 ) {
@@ -25,7 +24,7 @@ fun UIDemoBottomBar(
             val selected = currentDestination.isBottomBarDestinationInHierarchy(destination)
             NavigationBarItem(
                 selected = selected,
-                onClick = { }, //8
+                onClick = { onNavigateToDestination(destination) },
                 icon = {
                     Icon(imageVector = destination.icon, contentDescription = stringResource(id = destination.titleTextId))
                 },
